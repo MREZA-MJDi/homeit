@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('unit',20)->nullable();
             $table->string('postal_code',10)->nullable();
             $table->boolean('is_default')->default(false);
-            
+
 
 
             $table->timestamps();

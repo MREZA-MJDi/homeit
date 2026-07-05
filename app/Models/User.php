@@ -20,10 +20,27 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+
+        'first_name',
+
+        'last_name',
+
+        'mobile',
+
         'email',
+
         'password',
+
+        'avatar',
+
+        'gender',
+
+        'city_id',
+
+        'is_active',
+
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -44,7 +61,20 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'mobile_verified_at' => 'datetime',
+            'last_login_at' => 'datetime',
+            'is_active' => 'boolean',
             'password' => 'hashed',
         ];
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
     }
 }
