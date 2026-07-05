@@ -65,4 +65,27 @@ class RolesAndPermissionsSeeder extends Seeder
                 'guard_name' => 'web',
             ]);
     }
+        Role::findByName('Admin')->syncPermissions(['user.view',
+            'user.create',
+            'user.update',
+            'user.delete',
+
+            'service.view',
+            'service.create',
+            'service.update',
+            'service.delete',
+
+            'order.view',
+            'order.create',
+            'order.update',
+            'order.cancel',
+
+            'review.view',
+            'review.create',
+            'review.update',
+            'review.delete',
+
+            'wallet.view',
+            'wallet.charge',
+            'wallet.withdraw',]);
 }}
