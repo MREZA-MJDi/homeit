@@ -22,7 +22,10 @@ class Service extends Model
         'image',
         'is_active',
     ];
-
+    public function technicians()
+    {
+        return $this->hasMany(TechnicianService::class);
+    }
     public function category()
     {
         return $this->belongsTo(ServiceCategory::class, 'category_id');

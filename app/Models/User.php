@@ -77,4 +77,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Address::class);
     }
+
+    public function technicianProfile()
+    {
+        return $this->hasOne(TechnicianProfile::class);
+    }
+
+    public function technicianServices()
+    {
+        return $this->hasMany(TechnicianService::class, 'technician_id');
+    }
 }
