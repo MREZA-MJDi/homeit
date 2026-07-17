@@ -12,9 +12,9 @@ class TechnicianService extends Model
     protected $fillable = [
         'technician_id',
         'service_id',
-        'custom_price',
+        'price',
+        'years_of_experience',
         'estimated_duration',
-        'experience_years',
         'description',
         'is_active',
     ];

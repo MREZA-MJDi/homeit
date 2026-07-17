@@ -11,13 +11,11 @@ class TechnicianProfile extends Model
 
     protected $fillable = [
         'user_id',
-        'avatar',
         'bio',
-        'national_code',
-        'iban',
+        'years_of_experience',
+        'education',
+        'avatar',
         'is_available',
-        'vacation_until',
-        'is_verified',
     ];
 
     protected function casts(): array
