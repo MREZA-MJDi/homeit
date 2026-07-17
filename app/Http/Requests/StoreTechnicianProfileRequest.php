@@ -12,7 +12,7 @@ class StoreTechnicianProfileRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,27 @@ class StoreTechnicianProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'avatar' => ['nullable', 'image', 'max:2048'],
+
+            'bio' => ['nullable', 'string', 'max:1000'],
+
+            'national_code' => [
+                'nullable',
+                'string',
+                'size:10',
+                'unique:technician_profiles,national_code'
+            ],
+
+            'iban' => [
+                'nullable',
+                'string',
+                'max:34',
+                'unique:technician_profiles,iban'
+            ],
+
+            'is_available' => ['boolean'],
+
+            'vacation_until' => ['nullable', 'date', 'after_or_equal:today'],
         ];
     }
 }

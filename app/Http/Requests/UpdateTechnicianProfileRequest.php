@@ -12,7 +12,7 @@ class UpdateTechnicianProfileRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -20,10 +20,44 @@ class UpdateTechnicianProfileRequest extends FormRequest
      *
      * @return array<string, ValidationRule|array<mixed>|string>
      */
+
     public function rules(): array
     {
         return [
-            //
+
+            'avatar' => ['nullable','image','max:2048'],
+
+            'bio' => ['nullable','string','max:1000'],
+
+            'national_code' => [
+
+                'nullable',
+
+                'string',
+
+                'size:10',
+
+                Rule::unique('technician_profiles')
+                    ->ignore($this->technician_profile),
+
+            ],
+
+            'iban' => [
+
+                'nullable',
+
+                'string',
+
+                'max:34',
+
+                Rule::unique('technician_profiles')
+                    ->ignore($this->technician_profile),
+
+            ],
+
+            'is_available' => ['boolean'],
+
+            'vacation_until' => ['nullable','date'],
         ];
     }
 }
