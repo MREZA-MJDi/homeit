@@ -9,6 +9,7 @@ class Address extends Model
 {
     /** @use HasFactory<\Database\Factories\AddressFactory> */
     use HasFactory;
+
     protected $fillable = [
         'user_id',
         'city_id',
@@ -25,7 +26,7 @@ class Address extends Model
     public function casts()
     {
         return [
-            'is_default'=>'boolean'
+            'is_default' => 'boolean'
         ];
     }
 
@@ -37,5 +38,10 @@ class Address extends Model
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 }

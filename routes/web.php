@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProfileController;
@@ -51,6 +52,46 @@ Route::middleware(['auth', 'verified'])->group(function () {
     ]);
 
 });
+Route::middleware(['auth', 'verified'])->group(function () {
+
+    Route::resource('orders', OrderController::class)
+        ->except([
+            'create',
+            'edit',
+            'destroy'
+        ]);
+
+    Route::patch(
+        'orders/{order}/assign-technician',
+        [OrderController::class, 'assignTechnician']
+    )->name('orders.assign-technician');
+
+    Route::patch(
+        'orders/{order}/accept',
+        [OrderController::class, 'accept']
+    )->name('orders.accept');
+
+    Route::patch(
+        'orders/{order}/on-the-way',
+        [OrderController::class, 'onTheWay']
+    )->name('orders.on-the-way');
+
+    Route::patch(
+        'orders/{order}/start',
+        [OrderController::class, 'start']
+    )->name('orders.start');
+
+    Route::patch(
+        'orders/{order}/complete',
+        [OrderController::class, 'complete'
+        ])->name('orders.complete');
+
+    Route::patch(
+        'orders/{order}/cancel',
+        [OrderController::class, 'cancel']
+    )->name('orders.cancel');
+
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -71,4 +112,4 @@ Route::middleware('auth')->group(function () {
 
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

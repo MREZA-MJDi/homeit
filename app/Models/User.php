@@ -87,4 +87,17 @@ class User extends Authenticatable
     {
         return $this->hasMany(TechnicianService::class, 'technician_id');
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'customer_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function assignedOrders()
+    {
+        return $this->hasMany(Order::class, 'assigned_technician_id');
+    }
 }
