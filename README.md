@@ -2,6 +2,9 @@
 
 HomeIT is a Laravel web platform foundation for connecting customers with on-site IT technicians. Its intended service catalogue covers computer troubleshooting, operating-system and software setup, network/Wi-Fi configuration, remote support, and technical consulting. The repository currently includes the Laravel application foundation and authentication; do not assume every service workflow is production-complete.
 
+## Dedicated dashboard
+HomeIT has a dedicated dashboard tailored to the platform's IT-service workflow. The dashboard is part of the product itself; feature completeness should still be checked against the current code and tests before production use.
+
 ## Technology
 - PHP `^8.2`, Laravel `^12.0`
 - Blade, Tailwind CSS, Alpine.js, Vite
